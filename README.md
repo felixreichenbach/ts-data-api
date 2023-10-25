@@ -1,6 +1,6 @@
 # Viam - TypeScript SDK Data API Example
 
-This example is based upon the example provided as part of the TypeScript SDK [here](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/connect-app)
+This app is based upon the example provided as part of the TypeScript SDK [here](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/connect-app)
 
 The Viam TypeScript SDK documentation: https://www.npmjs.com/package/@viamrobotics/sdk
 
