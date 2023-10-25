@@ -1,7 +1,7 @@
 import { type DialOptions } from '@viamrobotics/rpc/src/dial';
-import * as VIAM from '@viamrobotics/sdk';
+import { ViamClient, FilterOptions } from '@viamrobotics/sdk';
 
-async function connect(): Promise<VIAM.ViamClient> {
+async function connect(): Promise<ViamClient> {
   const credential = {
     payload: '<API-KEY>',
     type: 'api-key',
@@ -12,7 +12,7 @@ async function connect(): Promise<VIAM.ViamClient> {
     credentials: credential,
   };
 
-  const client = new VIAM.ViamClient(dialOpts);
+  const client = new ViamClient(dialOpts);
   await client.connect();
 
   return client;
@@ -20,15 +20,14 @@ async function connect(): Promise<VIAM.ViamClient> {
 
 const button = <HTMLButtonElement>document.getElementById('main-button');
 
-async function run(client: VIAM.ViamClient) {
+async function run(client: ViamClient) {
   // A filter is an optional tool to filter out which data comes back.
-
-  const opts: VIAM.FilterOptions = {
+  const opts: FilterOptions = {
     startTime: new Date('2023-10-25T09:00:00.000Z'),
     endTime: new Date('2023-10-25T09:18:00.000Z'),
     componentType: 'movement_sensor',
     componentName: 'accelerometer'
-};
+  };
 
   const filter = client.dataClient?.createFilter(opts);
 
@@ -45,7 +44,7 @@ async function run(client: VIAM.ViamClient) {
 }
 
 async function main() {
-  let client: VIAM.ViamClient;
+  let client: ViamClient;
   try {
     button.textContent = 'Connecting...';
     client = await connect();
